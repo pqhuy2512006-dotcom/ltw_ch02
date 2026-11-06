@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+<!--     Khai báo class EmailListServlet -->
+    <servlet>
+        <servlet-name>EmailListServlet</servlet-name>
+        <servlet-class>murach.email.EmailListServlet</servlet-class>
+    </servlet>
+
+<!--    &lt;!&ndash; Ánh xạ đường dẫn /emailList vào Servlet &ndash;&gt;-->
+    <servlet-mapping>
+        <servlet-name>EmailListServlet</servlet-name>
+        <url-pattern>/emailList</url-pattern>
+    </servlet-mapping>
+
+    <!-- Trang mặc định khi mở web -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+</web-app>
