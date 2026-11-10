@@ -41,6 +41,8 @@ public class EmailListServlet extends HttpServlet {
                 survey.setDob(LocalDate.parse(dobString));
             }
 
+            survey.setHearFrom(request.getParameter("contactVia"));
+
             String c1 = request.getParameter("c1");
             survey.setWantsAnnouncements((c1 != null) ? "Yes" : "No");
 
