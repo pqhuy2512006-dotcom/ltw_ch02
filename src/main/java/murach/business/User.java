@@ -7,6 +7,7 @@ public class User implements Serializable {
     private String lastName;
     private String email;
 
+
     public User() {
         firstName = "";
         lastName = "";

@@ -5,9 +5,12 @@
     <title>Murach's Java Servlets and JSP</title>
     <link rel="stylesheet" href="styles/main.css" type="text/css"/>
 </head>
-
 <body>
-<h1>Join our email list</h1>
+<img src="https://www.southeastlinuxfest.org/wp-content/uploads/2014/06/Murach_image.jpg" alt="Murach Logo">
+<h1>Surver</h1>
+<p>if you have a moment, we'd appreciate it if you would fill out this</p>
+
+<h1>Your information</h1>
 <p>To join our email list, enter your name and email address below.</p>
 <form action="emailList" method="post">
     <input type="hidden" name="action" value="add">
@@ -23,8 +26,30 @@
     <input type="text" name="lastName" requied>
     <br>
 
-    <label>&nbsp</label>
+    <label>Date of Brith</label>
+    <input type="date" name="dob" requied>
+    <br>
+
+    <h1>How did you hear about us?</h1>
+    <input type=radio name="contactVia" value="r1">Search engine
+    <input type=radio name="contactVia" value="r1">Word of mouth
+    <input type=radio name="contactVia" value="r1">Social Media
+    <input type=radio name="contactVia" value="r1">Other
+
+
+    <h1>Would you like to receive announcements about new CDs and special offers?</h1>
+
+    <input type="checkbox" name="c1">YES, rd like that.<br>
+    <input type="checkbox" name="c2">YES, please send.<br>
+    please contact me by:
+    <select name ="country" size="3" multiple>
+        <option value ="Email or" selected> Email or postal mail</option>
+        <option value ="Email only">Email only</option>
+        <option value ="Postal">Postal mail only</option>
+    </select>
+    <br>
     <input type="submit" value="join Now" id="submit">
+
 </form>
 </body>
 </html>

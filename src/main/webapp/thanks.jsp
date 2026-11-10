@@ -11,19 +11,34 @@
     <p>Here is the information that you entered:</p>
 
     <label>Email:</label>
-    <span>${user.email}</span><br>
+    <span>${survey.email}</span><br>
 
     <label>First Name:</label>
-    <span>${user.firstName}</span><br>
+    <span>${survey.firstName}</span><br>
 
     <label>Last Name:</label>
-    <span>${user.lastName}</span><br>
+    <span>${survey.lastName}</span><br>
+
+    <label>Date of Birth:</label>
+    <span>${survey.dob}</span><br>
+
+    <label>Heard about us:</label>
+    <span>${survey.hearFrom}</span><br>
+
+    <label>Announcements:</label>
+    <span>${survey.wantsAnnouncements}</span><br>
+
+    <label>Special Offers:</label>
+    <span>${survey.wantsSpecialOffers}</span><br>
+
+    <label>Contact Method:</label>
+    <span>${survey.contactMethod}</span><br>
 
     <p>To enter another email address, click on the Back button in your browser or the Return button shown below.</p>
 
-    <form action="" method="get">
+    <form action="emailList" method="get">
         <input type="hidden" name="action" value="join">
-        <input type="submit" value="Return">
+        <input type="submit" value="Return" id="submit">
     </form>
 </body>
 </html>

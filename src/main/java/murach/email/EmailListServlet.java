@@ -8,13 +8,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import murach.business.User;
+import java.time.LocalDate;
+import murach.business.Survey;
 import murach.data.UserDB;
 
 
 public class EmailListServlet extends HttpServlet {
 
-    // CHỖ SỬA 1: Đổi HttpServerRequest -> HttpServletRequest, HttpServerProvider -> HttpServletResponse
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -30,24 +30,43 @@ public class EmailListServlet extends HttpServlet {
             url = "/index.html";
         }
         else if (action.equals("add")) {
-            // CHỖ SỬA 2: Đưa toàn bộ việc lấy dữ liệu, tạo User, gọi DB và setAttribute VÀO TRONG ngoặc nhọn này
-            String firstName = request.getParameter("firstName");
-            String lastName = request.getParameter("lastName");
-            String email = request.getParameter("email");
+            Survey survey = new Survey();
 
-            User user = new User(firstName, lastName, email);
-            UserDB.insert(user);
-            request.setAttribute("user", user);
+            survey.setFirstName(request.getParameter("firstName"));
+            survey.setLastName(request.getParameter("lastName"));
+            survey.setEmail(request.getParameter("email"));
+
+            String dobString = request.getParameter("dob");
+            if(dobString != null && !dobString.isEmpty()){
+                survey.setDob(LocalDate.parse(dobString));
+            }
+
+            String c1 = request.getParameter("c1");
+            survey.setWantsAnnouncements((c1 != null) ? "Yes" : "No");
+
+            String c2 = request.getParameter("c2");
+            survey.setWantsSpecialOffers((c2 != null) ? "Yes" : "No");
+
+            String[] countries = request.getParameterValues("country");
+            if(countries != null){
+                String joinedCountries = String.join(", ", countries);
+                survey.setContactMethod(joinedCountries);
+            }
+
+            System.out.println("Form submitted for: " + survey.getFirstName() + " " + survey.getlastName());
+
+            request.setAttribute("survey", survey);
 
             url = "/thanks.jsp";
-        } // Đóng ngoặc của else if ở đây
+        }
 
-        // CHỖ SỬA 3: Dòng getServletContext này PHẢI NẰM BÊN TRONG hàm doPost (trước dấu đóng ngoặc của doPost)
+
+
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);
 
-    } // Đóng ngoặc kết thúc hàm doPost ở đây
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
